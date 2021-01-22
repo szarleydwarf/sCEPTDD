@@ -12,3 +12,15 @@ struct Account {
     let kind:String?
     let balance:Double?
 }
+
+struct AccountList {
+    var accounts: [Account]
+    
+    var isEmpty:Bool{
+      return true
+    }
+    
+    var count:Int {
+        return 0
+    }
+}
