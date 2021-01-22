@@ -32,6 +32,14 @@ class ViewModelTest: XCTestCase {
         XCTAssertNotNil(result)
     }
     
+    func testNewVM_AccountList_NotNil () {
+        // given
+        // when
+        let result = self.vm.accountsList
+        // then
+        XCTAssertNotNil(result)
+    }
+    
     func testNVM_AccountList_isEmpty () {
         // given
         // when
@@ -39,4 +47,6 @@ class ViewModelTest: XCTestCase {
         // then
         XCTAssertTrue(result)
     }
+    
+    
 }
