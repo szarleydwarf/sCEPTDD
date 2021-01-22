@@ -15,9 +15,35 @@ class ViewModelTest: XCTestCase {
     override func setUp() {
         self.vm = ViewModel()
     }
-
+    
     override func tearDown() {
         self.vm = nil
+        // given
+        // when
+        // then
     }
-
+    
+    func testNewVM_isNotNil () {
+        // given
+        
+        // when
+        let result = self.vm
+        // then
+        XCTAssertNotNil(result)
+    }
+    
+    func testNVM_AccountList_isNil () {
+        // given
+        // when
+        let result = self.vm.accountsList
+        // then
+        XCTAssertNil(result)
+    }
+    
+    func testNVM_AccountList_isEmpty () {
+        // given
+        // when
+        // then
+        
+    }
 }

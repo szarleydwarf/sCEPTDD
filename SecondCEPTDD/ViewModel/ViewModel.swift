@@ -9,5 +9,6 @@
 import Foundation
 
 class ViewModel {
-    
+    var accountsList:[Account]?
+
 }
