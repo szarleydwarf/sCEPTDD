@@ -15,6 +15,9 @@
 		D776DE8C25BAE7BB00D2EB3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D776DE8A25BAE7BB00D2EB3C /* LaunchScreen.storyboard */; };
 		D776DE9725BAE7BB00D2EB3C /* SecondCEPTDDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DE9625BAE7BB00D2EB3C /* SecondCEPTDDTests.swift */; };
 		D776DEA725BAE87D00D2EB3C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DEA625BAE87C00D2EB3C /* Model.swift */; };
+		D776DEA925BAF0B400D2EB3C /* Accounts.json in Resources */ = {isa = PBXBuildFile; fileRef = D776DEA825BAF0B400D2EB3C /* Accounts.json */; };
+		D776DEAB25BAF0F900D2EB3C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DEAA25BAF0F900D2EB3C /* ViewModel.swift */; };
+		D776DEAD25BAF13A00D2EB3C /* ViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DEAC25BAF13A00D2EB3C /* ViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		D776DE9625BAE7BB00D2EB3C /* SecondCEPTDDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCEPTDDTests.swift; sourceTree = "<group>"; };
 		D776DE9825BAE7BB00D2EB3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D776DEA625BAE87C00D2EB3C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D776DEA825BAF0B400D2EB3C /* Accounts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Accounts.json; sourceTree = "<group>"; };
+		D776DEAA25BAF0F900D2EB3C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		D776DEAC25BAF13A00D2EB3C /* ViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,7 @@
 				D776DEA425BAE7FB00D2EB3C /* Model */,
 				D776DEA325BAE7F200D2EB3C /* ViewModel */,
 				D776DEA225BAE7E300D2EB3C /* View */,
-				D776DEA125BAE7CD00D2EB3C /* Other */,
+				D776DEA125BAE7CD00D2EB3C /* Misc */,
 				D776DE8D25BAE7BB00D2EB3C /* Info.plist */,
 			);
 			path = SecondCEPTDD;
@@ -96,19 +102,21 @@
 			children = (
 				D776DE9625BAE7BB00D2EB3C /* SecondCEPTDDTests.swift */,
 				D776DE9825BAE7BB00D2EB3C /* Info.plist */,
+				D776DEAC25BAF13A00D2EB3C /* ViewModelTest.swift */,
 			);
 			path = SecondCEPTDDTests;
 			sourceTree = "<group>";
 		};
-		D776DEA125BAE7CD00D2EB3C /* Other */ = {
+		D776DEA125BAE7CD00D2EB3C /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				D776DEA825BAF0B400D2EB3C /* Accounts.json */,
 				D776DE7F25BAE7B800D2EB3C /* AppDelegate.swift */,
 				D776DE8125BAE7B800D2EB3C /* SceneDelegate.swift */,
 				D776DE8825BAE7BB00D2EB3C /* Assets.xcassets */,
 				D776DE8A25BAE7BB00D2EB3C /* LaunchScreen.storyboard */,
 			);
-			path = Other;
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		D776DEA225BAE7E300D2EB3C /* View */ = {
@@ -123,6 +131,7 @@
 		D776DEA325BAE7F200D2EB3C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D776DEAA25BAF0F900D2EB3C /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -224,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D776DE8C25BAE7BB00D2EB3C /* LaunchScreen.storyboard in Resources */,
+				D776DEA925BAF0B400D2EB3C /* Accounts.json in Resources */,
 				D776DE8925BAE7BB00D2EB3C /* Assets.xcassets in Resources */,
 				D776DE8725BAE7B800D2EB3C /* Main.storyboard in Resources */,
 			);
@@ -243,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D776DEAB25BAF0F900D2EB3C /* ViewModel.swift in Sources */,
 				D776DE8425BAE7B800D2EB3C /* ViewController.swift in Sources */,
 				D776DE8025BAE7B800D2EB3C /* AppDelegate.swift in Sources */,
 				D776DE8225BAE7B800D2EB3C /* SceneDelegate.swift in Sources */,
@@ -254,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D776DEAD25BAF13A00D2EB3C /* ViewModelTest.swift in Sources */,
 				D776DE9725BAE7BB00D2EB3C /* SecondCEPTDDTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

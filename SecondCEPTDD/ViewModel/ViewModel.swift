@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  ViewModel.swift
 //  SecondCEPTDD
 //
 //  Created by The App Experts on 22/01/2021.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-struct Account {
-    let kind:String?
-    let balance:Double?
+class ViewModel {
+    
 }
