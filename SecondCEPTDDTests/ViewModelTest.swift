@@ -48,5 +48,11 @@ class ViewModelTest: XCTestCase {
         XCTAssertTrue(result)
     }
     
-    
+    func testNVM_AccountList_countIsZero () {
+        // given
+        // when
+        let result = self.vm.accountsList.count
+        // then
+        XCTAssertEqual(result, 0)
+    }
 }
