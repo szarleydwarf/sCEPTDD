@@ -100,4 +100,14 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertNotNil(result)
     }
     
+    func test_JFLfetch_countEqual5 () {
+        // given
+        guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
+        let data = self.jfl.getData(from: url)
+        // when
+        let result = self.jfl.fetch(from: data, using: JSONDecoder())
+        // then
+        XCTAssertEqual(result?.count, 5)
+    }
+    
 }
