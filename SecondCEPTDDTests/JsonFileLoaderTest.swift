@@ -21,4 +21,20 @@ class JsonFileLoaderTest: XCTestCase {
     override func tearDown() {
         self.jfl = nil
     }
+    
+    func test_NewJsonFileLoader_NotNil () {
+        // given
+        // when
+        let result = self.jfl
+        // then
+        XCTAssertNotNil(result)
+    }
+    
+    func test_NJFL_JSONDEcoder_Nil () {
+        // given
+        // when
+        let result = self.jfl.decoder
+        // then
+        XCTAssertNil(result)
+    }
 }
