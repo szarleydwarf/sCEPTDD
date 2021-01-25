@@ -11,7 +11,15 @@ import Foundation
 class JsonFileLoader {
     var decoder:JSONDecoder!
     
-    func fetch() -> [Account]? {
+    
+    func getLocalURL (fromFile fName:String?, withExtension eName:String?) -> URL? {
+        
+        return nil
+    }
+    
+    func fetch(from file:String?) -> [Account]? {
+        if let fileName = file {
+        }
         return nil
     }
 

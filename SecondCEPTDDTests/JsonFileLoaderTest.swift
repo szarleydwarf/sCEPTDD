@@ -30,7 +30,7 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-    func test_NJFL_JSONDEcoder_Nil () {
+    func test_NJFL_JSONDecoder_Nil () {
         // given
         // when
         let result = self.jfl.decoder
@@ -38,11 +38,24 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertNil(result)
     }
     
-    func test_fetch_returnNil () {
+    func test_JFL_localURL_isNil () {
         // given
         // when
-        let result = self.jfl.fetch()
+        let result = self.jfl.getLocalURL(fromFile: "", withExtension: "")
         // then
         XCTAssertNil(result)
     }
+    
+    func test_fetch_returnNil () {
+        // given
+        // when
+        let result = self.jfl.fetch(from: "")
+        // then
+        XCTAssertNil(result)
+    }
+    
+    func test_NJFL_ () {
+        
+    }
+    
 }
