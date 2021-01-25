@@ -12,7 +12,6 @@ class ViewModel: NSObject {
     var accountsList:[Account] = [Account]()
     
     override init() {
-//        self.accountsList = [Account]()
     }
 
 }
