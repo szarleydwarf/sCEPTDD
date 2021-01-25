@@ -85,13 +85,19 @@ class JsonFileLoaderTest: XCTestCase {
     func test_fetchFromNilData_returnNil () {
         // given
         // when
-        let result = self.jfl.fetch(from: "")
+        let result = self.jfl.fetch(from: nil, using: JSONDecoder())
         // then
         XCTAssertNil(result)
     }
     
-    func test_NJFL_ () {
-        
+    func test_NJFL_fetchFromData_NotNil () {
+        // given
+        guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
+        let data = self.jfl.getData(from: url)
+        // when
+        let result = self.jfl.fetch(from: data, using: JSONDecoder())
+        // then
+        XCTAssertNotNil(result)
     }
     
 }

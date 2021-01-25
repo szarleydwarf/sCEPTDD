@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Account {
+struct Account : Codable {
     let kind:String?
     let balance:Double?
 }

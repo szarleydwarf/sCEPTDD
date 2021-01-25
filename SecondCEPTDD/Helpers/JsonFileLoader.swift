@@ -22,10 +22,11 @@ class JsonFileLoader {
         return data
     }
     
-    func fetch(from file:String?) -> [Account]? {
-        if let fileName = file {
-        }
-        return nil
+    func fetch(from data: Data?, using decoder: JSONDecoder) -> [Account]? {
+        guard let data = data else {return nil}
+        guard let json = try? decoder.decode([Account].self, from: data) else { return nil}
+        print("local json \(json)")
+        return json
     }
-
+    
 }
