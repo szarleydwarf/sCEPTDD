@@ -37,4 +37,12 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNil(result)
     }
+    
+    func test_fetch_returnNil () {
+        // given
+        // when
+        let result = self.jfl.fetch()
+        // then
+        XCTAssertNil(result)
+    }
 }

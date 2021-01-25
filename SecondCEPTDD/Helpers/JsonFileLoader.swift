@@ -10,4 +10,9 @@ import Foundation
 
 class JsonFileLoader {
     var decoder:JSONDecoder!
+    
+    func fetch() -> [Account]? {
+        return nil
+    }
+
 }
