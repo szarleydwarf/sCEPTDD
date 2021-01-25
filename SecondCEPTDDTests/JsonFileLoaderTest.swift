@@ -17,7 +17,7 @@ class JsonFileLoaderTest: XCTestCase {
         // when
         // then
     }
-
+    
     override func tearDown() {
         self.jfl = nil
     }
@@ -55,7 +55,7 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-    func test_JFL_getData_isNil () {
+    func test_JFL_getDataFromEmptyURL_isNil () {
         // given
         guard let url = URL(string: "") else { return }
         // when
@@ -64,7 +64,25 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertNil(result)
     }
     
-    func test_fetch_returnNil () {
+    func test_JFL_getDataFromWrongURL_isNil () {
+        //given
+        guard let url = URL(string: "Accounts.json") else {return}
+        // when
+        let result = self.jfl.getData(from: url)
+        //then
+        XCTAssertNil(result)
+    }
+    
+    func test_JFL_getDataFromCorectURL_isNotNil () {
+        //given
+        guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
+        // when
+        let result = self.jfl.getData(from: url)
+        //then
+        XCTAssertNotNil(result)
+    }
+    
+    func test_fetchFromNilData_returnNil () {
         // given
         // when
         let result = self.jfl.fetch(from: "")

@@ -18,7 +18,8 @@ class JsonFileLoader {
     }
     
     func getData (from url:URL) -> Data? {
-        return nil
+        guard let data = try? Data(contentsOf: url) else {return nil}
+        return data
     }
     
     func fetch(from file:String?) -> [Account]? {
