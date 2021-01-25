@@ -14,4 +14,8 @@ class ViewModel: NSObject {
     override init() {
     }
 
+    func setAccountsList () {
+        
+    }
+    
 }

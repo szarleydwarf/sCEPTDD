@@ -29,15 +29,15 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNotNil(result)
     }
-    
-    func test_NJFL_JSONDecoder_Nil () {
-        // given
-        // when
-        let result = self.jfl.decoder
-        // then
-        XCTAssertNil(result)
-    }
-    
+//
+//    func test_NJFL_JSONDecoder_Nil () {
+//        // given
+//        // when
+//        let result = self.jfl.decoder
+//        // then
+//        XCTAssertNil(result)
+//    }
+//
     func test_JFL_localURL_isNil () {
         // given
         // when
