@@ -56,8 +56,6 @@ class ViewModelTest: XCTestCase {
         XCTAssertEqual(result, 0)
     }
     
-    func testNVM_AccountList_countIsFive () {
-        
-    }
+    
     
 }

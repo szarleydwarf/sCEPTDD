@@ -8,11 +8,11 @@
 
 import Foundation
 
-class ViewModel {
-    var accountsList:[Account]
+class ViewModel: NSObject {
+    var accountsList:[Account] = [Account]()
     
-    init() {
-        self.accountsList = [Account]()
+    override init() {
+//        self.accountsList = [Account]()
     }
 
 }
