@@ -9,10 +9,10 @@
 import Foundation
 
 class ViewModel {
-    var accountsList:AccountList
+    var accountsList:[Account]
     
     init() {
-        self.accountsList = AccountList(accounts: [Account]())
+        self.accountsList = [Account]()
     }
 
 }
