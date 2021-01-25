@@ -13,7 +13,11 @@ class JsonFileLoader {
     
     
     func getLocalURL (fromFile fName:String?, withExtension eName:String?) -> URL? {
-        
+        guard let url = Bundle.main.url(forResource: fName, withExtension: eName) else {return nil}
+        return url
+    }
+    
+    func getData (from url:URL) -> Data? {
         return nil
     }
     

@@ -46,6 +46,24 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertNil(result)
     }
     
+    func test_JFL_localURL_inNotNil () {
+        // given
+        // when
+        let result = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json")
+        print("RESULT \(result)")
+        // then
+        XCTAssertNotNil(result)
+    }
+    
+    func test_JFL_getData_isNil () {
+        // given
+        guard let url = URL(string: "") else { return }
+        // when
+        let result = self.jfl.getData(from: url)
+        // then
+        XCTAssertNil(result)
+    }
+    
     func test_fetch_returnNil () {
         // given
         // when
