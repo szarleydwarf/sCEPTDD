@@ -8,7 +8,15 @@
 
 import Foundation
 
-class ViewModel {
+class ViewModel: NSObject {
     var accountsList:[Account] = [Account]()
+    
+    override init() {
+    }
 
+    func setAccountsList (using data:Data?) {
+        guard let accounts = JsonFileLoader().fetch(from: data, using: JSONDecoder()) else {return}
+        self.accountsList = accounts
+    }
+    
 }

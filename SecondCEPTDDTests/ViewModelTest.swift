@@ -55,4 +55,46 @@ class ViewModelTest: XCTestCase {
         // then
         XCTAssertEqual(result, 0)
     }
+    
+    func test_SetAccountsList_countIsZero () {
+        // given
+        self.vm.setAccountsList(using: nil)
+        // when
+        let result = self.vm.accountsList.count
+        // then
+        XCTAssertEqual(result, 0)
+    }
+    
+    func test_SetAccountsList_countIsFive () {
+        // given
+        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        self.vm.setAccountsList(using: data)
+        // when
+        let result = self.vm.accountsList.count
+        // then
+        XCTAssertEqual(result, 5)
+    }
+    
+    func test_setAccountsList_firstElementKindIsCurrent () {
+        // given
+        let testCase = "current"
+        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        self.vm.setAccountsList(using: data)
+        // when
+        let result = self.vm.accountsList
+        // then
+        XCTAssertEqual(result[0].kind, testCase)
+    }
+    
+    func test_setAccountsList_firstElementBalanceIs1000 () {
+        // given
+        let testCase = 1000.0
+        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        self.vm.setAccountsList(using: data)
+        // when
+        let result = self.vm.accountsList
+        // then
+        XCTAssertEqual(result[0].balance, testCase)
+
+    }
 }

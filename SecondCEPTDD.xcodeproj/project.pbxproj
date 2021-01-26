@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73BB1A325BEE122009CA325 /* JsonFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73BB1A225BEE122009CA325 /* JsonFileLoader.swift */; };
+		D73BB1A725BEE1E6009CA325 /* JsonFileLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73BB1A625BEE1E6009CA325 /* JsonFileLoaderTest.swift */; };
 		D776DE8025BAE7B800D2EB3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DE7F25BAE7B800D2EB3C /* AppDelegate.swift */; };
 		D776DE8225BAE7B800D2EB3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DE8125BAE7B800D2EB3C /* SceneDelegate.swift */; };
 		D776DE8425BAE7B800D2EB3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776DE8325BAE7B800D2EB3C /* ViewController.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D73BB1A225BEE122009CA325 /* JsonFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileLoader.swift; sourceTree = "<group>"; };
+		D73BB1A625BEE1E6009CA325 /* JsonFileLoaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFileLoaderTest.swift; sourceTree = "<group>"; };
 		D776DE7C25BAE7B800D2EB3C /* SecondCEPTDD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecondCEPTDD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D776DE7F25BAE7B800D2EB3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D776DE8125BAE7B800D2EB3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				D776DE9625BAE7BB00D2EB3C /* SecondCEPTDDTests.swift */,
 				D776DE9825BAE7BB00D2EB3C /* Info.plist */,
 				D776DEAC25BAF13A00D2EB3C /* ViewModelTest.swift */,
+				D73BB1A625BEE1E6009CA325 /* JsonFileLoaderTest.swift */,
 			);
 			path = SecondCEPTDDTests;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 		D776DEA525BAE80300D2EB3C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D73BB1A225BEE122009CA325 /* JsonFileLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D73BB1A325BEE122009CA325 /* JsonFileLoader.swift in Sources */,
 				D776DEAB25BAF0F900D2EB3C /* ViewModel.swift in Sources */,
 				D776DE8425BAE7B800D2EB3C /* ViewController.swift in Sources */,
 				D776DE8025BAE7B800D2EB3C /* AppDelegate.swift in Sources */,
@@ -267,6 +274,7 @@
 			files = (
 				D776DEAD25BAF13A00D2EB3C /* ViewModelTest.swift in Sources */,
 				D776DE9725BAE7BB00D2EB3C /* SecondCEPTDDTests.swift in Sources */,
+				D73BB1A725BEE1E6009CA325 /* JsonFileLoaderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
