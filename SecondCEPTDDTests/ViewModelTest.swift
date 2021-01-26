@@ -58,11 +58,21 @@ class ViewModelTest: XCTestCase {
     
     func test_SetAccountsList_countIsZero () {
         // given
-        self.vm.setAccountsList()
+        self.vm.setAccountsList(using: nil)
         // when
         let result = self.vm.accountsList.count
         // then
         XCTAssertEqual(result, 0)
+    }
+    
+    func test_SetAccountsList_countIsFive () {
+        // given
+        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        self.vm.setAccountsList(using: data)
+        // when
+        let result = self.vm.accountsList.count
+        // then
+        XCTAssertEqual(result, 5)
     }
     
 }

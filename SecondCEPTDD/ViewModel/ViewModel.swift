@@ -14,8 +14,9 @@ class ViewModel: NSObject {
     override init() {
     }
 
-    func setAccountsList () {
-        
+    func setAccountsList (using data:Data?) {
+        guard let accounts = JsonFileLoader().fetch(from: data, using: JSONDecoder()) else {return}
+        self.accountsList = accounts
     }
     
 }
