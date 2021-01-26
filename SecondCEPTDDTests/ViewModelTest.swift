@@ -86,5 +86,15 @@ class ViewModelTest: XCTestCase {
         XCTAssertEqual(result[0].kind, testCase)
     }
     
-    
+    func test_setAccountsList_firstElementBalanceIs1000 () {
+        // given
+        let testCase = 1000.0
+        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        self.vm.setAccountsList(using: data)
+        // when
+        let result = self.vm.accountsList
+        // then
+        XCTAssertEqual(result[0].balance, testCase)
+
+    }
 }
