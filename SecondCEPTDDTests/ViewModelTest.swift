@@ -75,4 +75,16 @@ class ViewModelTest: XCTestCase {
         XCTAssertEqual(result, 5)
     }
     
+    func test_setAccountsList_firstElementKindIsCurrent () {
+        // given
+        let testCase = "current"
+        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        self.vm.setAccountsList(using: data)
+        // when
+        let result = self.vm.accountsList
+        // then
+        XCTAssertEqual(result[0].kind, testCase)
+    }
+    
+    
 }
