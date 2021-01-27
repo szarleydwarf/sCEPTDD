@@ -9,15 +9,23 @@
 import Foundation
 
 class JsonFileLoader {
-    var decoder: JSONDecoder?
+    private(set) var decoder: JSONDecoder?
     
     init(decoder: JSONDecoder) {
         self.decoder = decoder
+        self.decoder?.keyDecodingStrategy = .convertFromSnakeCase
     }
     
     func getLocalURL (fromFile fName:String?, withExtension eName:String?) -> URL? {
         guard let url = Bundle.main.url(forResource: fName, withExtension: eName) else {return nil}
         return url
+    }
+    
+    func getRemoteURL () -> URL?{
+        var componenets = URLComponents()
+        
+        guard let url = componenets.url else {return nil}
+        return !url.absoluteString.isEmpty ? url : nil
     }
     
     func getData (from url:URL) -> Data? {

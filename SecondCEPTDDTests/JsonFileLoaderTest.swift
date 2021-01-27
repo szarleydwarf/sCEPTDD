@@ -11,6 +11,7 @@ import XCTest
 
 class JsonFileLoaderTest: XCTestCase {
     var jfl:JsonFileLoader!
+    
     override func setUp() {
         self.jfl = JsonFileLoader(decoder: JSONDecoder())
         // given
@@ -108,5 +109,14 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertEqual(result?.count, 5)
     }
+    
+    func test_GetRemoteURL_isNil () {
+        // given
+        // when
+        let result = self.jfl.getRemoteURL()
+        // then
+        XCTAssertNil(result)
+    }
+    
     
 }
