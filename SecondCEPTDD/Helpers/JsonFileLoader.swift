@@ -21,8 +21,11 @@ class JsonFileLoader {
         return url
     }
     
-    func getRemoteURL () -> URL?{
+    func getRemoteURL ( scheme:String?, host:String?, path:String?) -> URL?{
         var componenets = URLComponents()
+        guard let sc = scheme, !sc.isEmpty else {return nil}
+        
+        componenets.scheme = sc
         
         guard let url = componenets.url else {return nil}
         return !url.absoluteString.isEmpty ? url : nil

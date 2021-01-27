@@ -30,7 +30,7 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNotNil(result)
     }
-
+    
     func test_NJFL_JSONDecoder_NotNil () {
         // given
         // when
@@ -38,7 +38,7 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNotNil(result)
     }
-
+    
     func test_JFL_localURL_isNil () {
         // given
         // when
@@ -113,10 +113,26 @@ class JsonFileLoaderTest: XCTestCase {
     func test_GetRemoteURL_isNil () {
         // given
         // when
-        let result = self.jfl.getRemoteURL()
+        let result = self.jfl.getRemoteURL(scheme: "",host: "",path: "")
         // then
         XCTAssertNil(result)
     }
     
+    func test_getRemoteURL_NotNil () {
+        // given
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "https",host: "",path: "")
+        // then
+        XCTAssertNotNil(result)
+    }
     
+    func test_getRemoteURL_NotEqualsCorrectURL () {
+        // given
+        let url:URL = URL(string: "https//:my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "https",host: "",path: "")
+        // then
+        XCTAssertNotEqual(result, url)
+        
+    }
 }
