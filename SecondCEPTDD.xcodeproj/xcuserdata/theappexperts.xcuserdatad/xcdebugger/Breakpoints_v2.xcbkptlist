@@ -7,15 +7,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3DFC0B94-F445-4248-90A7-16B067129953"
-            shouldBeEnabled = "Yes"
+            uuid = "B90C6C8D-10F8-4295-AB47-3C424B5DE13B"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SecondCEPTDD/Helpers/JsonFileLoader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "getRemoteURL(scheme:host:path:)"
             landmarkType = "7">
          </BreakpointContent>

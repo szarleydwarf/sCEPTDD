@@ -121,18 +121,26 @@ class JsonFileLoaderTest: XCTestCase {
     func test_getRemoteURL_NotNil () {
         // given
         // when
-        let result = self.jfl.getRemoteURL(scheme: "https",host: "",path: "")
+        let result = self.jfl.getRemoteURL(scheme: "https", host: "my-json-server.typicode.com", path: "/szarleydwarf/secondCEP/master/db/accounts")
         // then
         XCTAssertNotNil(result)
     }
     
     func test_getRemoteURL_NotEqualsCorrectURL () {
         // given
-        let url:URL = URL(string: "https//:my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
+        let url:URL = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
         // when
         let result = self.jfl.getRemoteURL(scheme: "https",host: "",path: "")
         // then
         XCTAssertNotEqual(result, url)
-        
+    }
+
+    func test_getRemoteURL_EqualsCorrectURL () {
+        // given
+        let url:URL = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "https", host: "my-json-server.typicode.com", path: "/szarleydwarf/secondCEP/master/db/accounts")
+        // then
+        XCTAssertEqual(result, url)
     }
 }
