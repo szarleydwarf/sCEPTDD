@@ -12,7 +12,7 @@ import XCTest
 class JsonFileLoaderTest: XCTestCase {
     var jfl:JsonFileLoader!
     override func setUp() {
-        self.jfl = JsonFileLoader()
+        self.jfl = JsonFileLoader(decoder: JSONDecoder())
         // given
         // when
         // then
@@ -29,15 +29,15 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNotNil(result)
     }
-//
-//    func test_NJFL_JSONDecoder_Nil () {
-//        // given
-//        // when
-//        let result = self.jfl.decoder
-//        // then
-//        XCTAssertNil(result)
-//    }
-//
+
+    func test_NJFL_JSONDecoder_NotNil () {
+        // given
+        // when
+        let result = self.jfl.decoder
+        // then
+        XCTAssertNotNil(result)
+    }
+
     func test_JFL_localURL_isNil () {
         // given
         // when

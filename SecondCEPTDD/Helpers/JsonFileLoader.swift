@@ -9,6 +9,11 @@
 import Foundation
 
 class JsonFileLoader {
+    var decoder: JSONDecoder?
+    
+    init(decoder: JSONDecoder) {
+        self.decoder = decoder
+    }
     
     func getLocalURL (fromFile fName:String?, withExtension eName:String?) -> URL? {
         guard let url = Bundle.main.url(forResource: fName, withExtension: eName) else {return nil}

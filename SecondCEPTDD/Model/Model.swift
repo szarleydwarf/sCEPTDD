@@ -12,3 +12,7 @@ struct Account : Codable {
     let kind:String?
     let balance:Double?
 }
+
+struct Accounts : Codable {
+    let accounts: [Account]?
+}
