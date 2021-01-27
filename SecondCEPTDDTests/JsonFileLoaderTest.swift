@@ -50,7 +50,6 @@ class JsonFileLoaderTest: XCTestCase {
         // given
         // when
         let result = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json")
-        print("RESULT \(result)")
         // then
         XCTAssertNotNil(result)
     }
@@ -85,7 +84,7 @@ class JsonFileLoaderTest: XCTestCase {
     func test_fetchFromNilData_returnNil () {
         // given
         // when
-        let result = self.jfl.fetch(from: nil, using: JSONDecoder())
+        let result = self.jfl.fetch(from: nil)
         // then
         XCTAssertNil(result)
     }
@@ -95,7 +94,7 @@ class JsonFileLoaderTest: XCTestCase {
         guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
         let data = self.jfl.getData(from: url)
         // when
-        let result = self.jfl.fetch(from: data, using: JSONDecoder())
+        let result = self.jfl.fetch(from: data)
         // then
         XCTAssertNotNil(result)
     }
@@ -105,7 +104,7 @@ class JsonFileLoaderTest: XCTestCase {
         guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
         let data = self.jfl.getData(from: url)
         // when
-        let result = self.jfl.fetch(from: data, using: JSONDecoder())
+        let result = self.jfl.fetch(from: data)
         // then
         XCTAssertEqual(result?.count, 5)
     }

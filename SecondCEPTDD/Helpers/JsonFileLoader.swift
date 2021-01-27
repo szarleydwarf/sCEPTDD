@@ -25,9 +25,9 @@ class JsonFileLoader {
         return data
     }
     
-    func fetch(from data: Data?, using decoder: JSONDecoder) -> [Account]? {
+    func fetch(from data: Data?) -> [Account]? {
         guard let data = data else {return nil}
-        guard let json = try? decoder.decode([Account].self, from: data) else { return nil}
+        guard let json = try? self.decoder?.decode([Account].self, from: data) else { return nil}
         return json
     }
     
