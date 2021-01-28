@@ -143,4 +143,22 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertEqual(result, url)
     }
+    
+    func test_getRestData_isNil () {
+        // given
+        // when
+        let result = self.jfl.getRestData (from: nil)
+        // then
+        XCTAssertNil(result)
+    }
+    
+    func test_getRestDataWithEmptyURL_isNil () {
+        // given
+        guard let url = URL(string: "") else { return }
+        // when
+        let result = self.jfl.getRestData (from: url)
+        // then
+        XCTAssertNil(result)
+    }
+    
 }

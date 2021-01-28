@@ -35,6 +35,13 @@ class JsonFileLoader {
         return !url.absoluteString.isEmpty ? url : nil
     }
     
+    func getRestData (from url: URL?) -> Data? {
+        guard let url = url, !url.absoluteString.isEmpty else {return nil}
+        
+        
+        return nil
+    }
+    
     func getData (from url:URL) -> Data? {
         guard let data = try? Data(contentsOf: url) else {return nil}
         return data
