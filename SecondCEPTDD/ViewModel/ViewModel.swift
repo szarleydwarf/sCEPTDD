@@ -19,4 +19,7 @@ class ViewModel: NSObject {
         self.accountsList = accounts
     }
     
+    func callRestAPI (using data:Data?) {
+        
+    }
 }

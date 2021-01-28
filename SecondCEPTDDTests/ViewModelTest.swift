@@ -97,4 +97,14 @@ class ViewModelTest: XCTestCase {
         XCTAssertEqual(result[0].balance, testCase)
 
     }
+    
+    func test_setAccountsfromRESTAPI_withNilData_CountIsZero () {
+        // given
+        self.vm.callRestAPI(using: nil)
+        // when
+        let result = self.vm.accountsList.count
+        // then
+        XCTAssertEqual(result, 0)
+
+    }
 }

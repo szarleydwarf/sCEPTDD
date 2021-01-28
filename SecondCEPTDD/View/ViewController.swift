@@ -21,6 +21,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         self.vm = ViewModel()
         
+//        self.useLocalJSON()
+        self.useRestAPI()
+    }
+    
+    func useRestAPI () {
+        
+    }
+    
+    func useLocalJSON () {
         guard let url = JsonFileLoader(decoder: JSONDecoder()).getLocalURL(fromFile: "Accounts", withExtension: "json") else {return}
         guard let data = JsonFileLoader(decoder: JSONDecoder()).getData(from: url) else {return}
         self.vm.setAccountsList(using: data)
