@@ -35,11 +35,12 @@ class JsonFileLoader {
         return !url.absoluteString.isEmpty ? url : nil
     }
     
-    func getRestData (from url: URL?) -> Data? {
-        guard let url = url, !url.absoluteString.isEmpty else {return nil}
+    func getRestData (from url: URL?, completion:@escaping(Bool,Data?) -> Void) {
+        guard let url = url, !url.absoluteString.isEmpty else {return}
         
-        
-        return nil
+        DispatchQueue.main.async {
+            completion(true, nil)
+        }
     }
     
     func getData (from url:URL) -> Data? {

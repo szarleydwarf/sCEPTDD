@@ -134,7 +134,7 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNotEqual(result, url)
     }
-
+    
     func test_getRemoteURL_EqualsCorrectURL () {
         // given
         let url:URL = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
@@ -147,8 +147,16 @@ class JsonFileLoaderTest: XCTestCase {
     func test_getRestData_isNil () {
         // given
         // when
-        let result = self.jfl.getRestData (from: nil)
+        let expectation = self.expectation(description: "nil")
+        
+        var result:Data?
+        self.jfl.getRestData (from: nil) { completed, data in
+            result = data!
+            expectation.fulfill()
+            
+        }
         // then
+        waitForExpectations(timeout: 5)
         XCTAssertNil(result)
     }
     
@@ -156,7 +164,9 @@ class JsonFileLoaderTest: XCTestCase {
         // given
         guard let url = URL(string: "") else { return }
         // when
-        let result = self.jfl.getRestData (from: url)
+        let result = self.jfl.getRestData (from: url) { completed, data in
+            
+        }
         // then
         XCTAssertNil(result)
     }
