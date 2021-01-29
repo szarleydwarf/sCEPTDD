@@ -26,11 +26,11 @@ class JsonFileLoader {
         guard let scheme = scheme, !scheme.isEmpty else {return nil}
         guard let host = host, !host.isEmpty else {return nil}
         guard let path = path, !path.isEmpty else {return nil}
-
+        
         components.scheme = scheme
         components.host = host
         components.path = path
-
+        
         guard let url = components.url else {return nil}
         return !url.absoluteString.isEmpty ? url : nil
     }
@@ -40,10 +40,28 @@ class JsonFileLoader {
             completion(false, nil)
             return
         }
-        
-        DispatchQueue.main.async {
-            completion(true, nil)
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let returnedData = data else {
+                completion(false, nil)
+                return
+            }
+            if self.checkIfValid(json: returnedData) {
+                DispatchQueue.main.async {
+                    completion(true, returnedData)
+                }
+            }
+            completion(false, nil)
+                        
+        }.resume()
+    }
+    
+    func checkIfValid(json: Data) -> Bool{
+        if JSONSerialization.isValidJSONObject(json) {
+            print("Valid Json")
+            return true
         }
+        print("InValid Json")
+        return false
     }
     
     func getData (from url:URL) -> Data? {

@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B90C6C8D-10F8-4295-AB47-3C424B5DE13B"
+            uuid = "438607AD-B8BB-4AEE-83BB-7E324BBF25C2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SecondCEPTDD/Helpers/JsonFileLoader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "getRemoteURL(scheme:host:path:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "getRestData(from:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8793F71A-9900-43C2-87C6-F23D3A335BD8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SecondCEPTDD/Helpers/JsonFileLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "checkIfValid(json:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

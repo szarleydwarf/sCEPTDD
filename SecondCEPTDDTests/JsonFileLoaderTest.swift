@@ -200,7 +200,7 @@ class JsonFileLoaderTest: XCTestCase {
     
     func test_getRestDataFromCorrectURL_isTrue () {
          // given
-         let expectation = XCTestExpectation(description: "false")
+         let expectation = XCTestExpectation(description: "true")
                // when
          guard let url = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts") else { return }
 
@@ -209,9 +209,24 @@ class JsonFileLoaderTest: XCTestCase {
              expectation.fulfill()
          }
          // then
-         wait(for:[expectation], timeout: 5)
+         wait(for:[expectation], timeout: 10)
 
      }
+
+    func test_getRestDataFromInCorrectURL_DataNil () {
+        // given
+        let expectation = XCTestExpectation(description: "not nil")
+              // when
+        guard let url = URL(string: "https://my-json-server.typicode.com/") else { return }
+
+        self.jfl.getRestData (from: url) { completed, data in
+            XCTAssertNil(data)
+            expectation.fulfill()
+        }
+        // then
+        wait(for:[expectation], timeout: 5)
+
+    }
 
     func test_getRestDataFromCorrectURL_DataNotNil () {
         // given
@@ -225,7 +240,6 @@ class JsonFileLoaderTest: XCTestCase {
         }
         // then
         wait(for:[expectation], timeout: 5)
-
     }
 
 }
