@@ -146,8 +146,8 @@ class JsonFileLoaderTest: XCTestCase {
     
     func test_getRestData_isNil () {
         // given
-        // when
         let expectation = XCTestExpectation(description: "nil")
+              // when
         
         self.jfl.getRestData (from: nil) { completed, data in
             XCTAssertNil(data)
@@ -162,7 +162,7 @@ class JsonFileLoaderTest: XCTestCase {
         guard let url = URL(string: "") else { return }
         let expectation = XCTestExpectation(description: "nil")
         // when
-        let result = self.jfl.getRestData (from: url) { completed, data in
+        self.jfl.getRestData (from: url) { completed, data in
             XCTAssertNil(data)
             expectation.fulfill()
         }
@@ -170,4 +170,31 @@ class JsonFileLoaderTest: XCTestCase {
         wait(for: [expectation], timeout: 5)
     }
     
+    func test_getRestDataFromNilURL_isFalse () {
+         // given
+         let expectation = XCTestExpectation(description: "false")
+               // when
+         
+         self.jfl.getRestData (from: nil) { completed, data in
+             XCTAssertFalse(completed)
+             expectation.fulfill()
+         }
+         // then
+         wait(for:[expectation], timeout: 5)
+     }
+    
+    func test_getRestDataFromEmptyURL_isFalse () {
+         // given
+         let expectation = XCTestExpectation(description: "false")
+               // when
+         guard let url = URL(string: "") else { return }
+
+         self.jfl.getRestData (from: url) { completed, data in
+             XCTAssertFalse(completed)
+             expectation.fulfill()
+         }
+         // then
+         wait(for:[expectation], timeout: 5)
+
+     }
 }

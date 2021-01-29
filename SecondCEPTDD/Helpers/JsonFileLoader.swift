@@ -37,7 +37,7 @@ class JsonFileLoader {
     
     func getRestData (from url: URL?, completion:@escaping(Bool,Data?) -> Void) {
         guard let url = url, !url.absoluteString.isEmpty else {
-            completion(true, nil)
+            completion(false, nil)
             return
         }
         
