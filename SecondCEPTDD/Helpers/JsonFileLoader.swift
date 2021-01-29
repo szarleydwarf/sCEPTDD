@@ -45,23 +45,31 @@ class JsonFileLoader {
                 completion(false, nil)
                 return
             }
-            if self.checkIfValid(json: returnedData) {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if self.checkIfValid(data: returnedData) {
                     completion(true, returnedData)
+                } else {
+                    completion(false, nil)
                 }
             }
-            completion(false, nil)
-                        
+            
         }.resume()
     }
     
-    func checkIfValid(json: Data) -> Bool{
-        if JSONSerialization.isValidJSONObject(json) {
-            print("Valid Json")
-            return true
+    func checkIfValid(data: Data) -> Bool{
+        do{
+            if let _ = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                return true
+            } else if let _ = try JSONSerialization.jsonObject(with: data, options: []) as? [Any] {
+                return true
+            } else {
+                return false
+            }
         }
-        print("InValid Json")
-        return false
+        catch let error as NSError {
+            print(error)
+            return false
+        }
     }
     
     func getData (from url:URL) -> Data? {

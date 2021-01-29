@@ -209,7 +209,7 @@ class JsonFileLoaderTest: XCTestCase {
              expectation.fulfill()
          }
          // then
-         wait(for:[expectation], timeout: 10)
+         wait(for:[expectation], timeout: 20)
 
      }
 
@@ -239,7 +239,7 @@ class JsonFileLoaderTest: XCTestCase {
             expectation.fulfill()
         }
         // then
-        wait(for:[expectation], timeout: 5)
+        wait(for:[expectation], timeout: 20)
     }
 
 }
