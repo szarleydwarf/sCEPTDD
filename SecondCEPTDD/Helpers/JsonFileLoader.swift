@@ -41,7 +41,10 @@ class JsonFileLoader {
     }
     
     func getRestData (from url: URL?, completion:@escaping(Result<Data, NetworkErrors>) -> Void) {
-        
+        guard let url = url else {
+            completion(.failure(.badURL))
+            return
+        }
         completion(.failure(.noData))
     }
     

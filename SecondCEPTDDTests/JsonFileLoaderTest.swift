@@ -144,20 +144,33 @@ class JsonFileLoaderTest: XCTestCase {
         XCTAssertEqual(result, url)
     }
     
-    func test_getRestData_isNil () {
+    func test_getRestData_fromNil_failureBadURL () {
         // given
-        let sut = Result<Data,SecondCEPTDD.NetworkErrors>.failure(SecondCEPTDD.NetworkErrors.noData)
+        let sut = Result<Data,SecondCEPTDD.NetworkErrors>.failure(SecondCEPTDD.NetworkErrors.badURL)
         var result:Result<Data,SecondCEPTDD.NetworkErrors>?
         // when
         
         self.jfl.getRestData (from: nil) { resultReturn in
-            print("RESULT \(resultReturn)")
+            print("1. RESULT \(resultReturn)")
             result = resultReturn
         }
         // then
         XCTAssertEqual(result, sut)
     }
-    
+
+    func test_getRestDataWithEmptyURL_failureBadURL () {
+        // given
+        let sut = Result<Data,SecondCEPTDD.NetworkErrors>.failure(SecondCEPTDD.NetworkErrors.badURL)
+        var result:Result<Data,SecondCEPTDD.NetworkErrors>?
+        // when
+        self.jfl.getRestData (from: URL(string: "")) { resultReturn in
+            print("2. RESULT \(resultReturn)")
+            result = resultReturn
+        }
+        // then
+        XCTAssertEqual(result, sut)
+    }
+
 //    func test_getRestDataWithEmptyURL_isNil () {
 //        // given
 //        guard let url = URL(string: "") else { return }
@@ -170,7 +183,7 @@ class JsonFileLoaderTest: XCTestCase {
 //        // then
 //        wait(for: [expectation], timeout: 5)
 //    }
-//
+
 //    func test_getRestDataFromNilURL_isFalse () {
 //         // given
 //         let expectation = XCTestExpectation(description: "false")
