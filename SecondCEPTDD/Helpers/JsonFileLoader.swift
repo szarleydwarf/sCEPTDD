@@ -45,7 +45,15 @@ class JsonFileLoader {
             completion(.failure(.badURL))
             return
         }
-        completion(.failure(.noData))
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let fetchedData = data else {
+                completion(.failure(.noData))
+                return
+            }
+            
+            completion(.success(fetchedData))
+        }.resume()
     }
     
 //    func getRestData (from url: URL?, completion:@escaping(Bool,Data?) -> Void) {

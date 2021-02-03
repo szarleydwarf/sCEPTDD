@@ -151,109 +151,37 @@ class JsonFileLoaderTest: XCTestCase {
         // when
         
         self.jfl.getRestData (from: nil) { resultReturn in
-            print("1. RESULT \(resultReturn)")
             result = resultReturn
         }
         // then
         XCTAssertEqual(result, sut)
     }
-
+    
     func test_getRestDataWithEmptyURL_failureBadURL () {
         // given
         let sut = Result<Data,SecondCEPTDD.NetworkErrors>.failure(SecondCEPTDD.NetworkErrors.badURL)
         var result:Result<Data,SecondCEPTDD.NetworkErrors>?
         // when
         self.jfl.getRestData (from: URL(string: "")) { resultReturn in
-            print("2. RESULT \(resultReturn)")
             result = resultReturn
         }
         // then
         XCTAssertEqual(result, sut)
     }
-
-//    func test_getRestDataWithEmptyURL_isNil () {
-//        // given
-//        guard let url = URL(string: "") else { return }
-//        let expectation = XCTestExpectation(description: "nil")
-//        // when
-//        self.jfl.getRestData (from: url) { completed, data in
-//            XCTAssertNil(data)
-//            expectation.fulfill()
-//        }
-//        // then
-//        wait(for: [expectation], timeout: 5)
-//    }
-
-//    func test_getRestDataFromNilURL_isFalse () {
-//         // given
-//         let expectation = XCTestExpectation(description: "false")
-//               // when
-//
-//         self.jfl.getRestData (from: nil) { completed, data in
-//             XCTAssertFalse(completed)
-//             expectation.fulfill()
-//         }
-//         // then
-//         wait(for:[expectation], timeout: 5)
-//     }
-//
-//    func test_getRestDataFromEmptyURL_isFalse () {
-//         // given
-//         let expectation = XCTestExpectation(description: "false")
-//               // when
-//         guard let url = URL(string: "") else { return }
-//
-//         self.jfl.getRestData (from: url) { completed, data in
-//             XCTAssertFalse(completed)
-//             expectation.fulfill()
-//         }
-//         // then
-//         wait(for:[expectation], timeout: 5)
-//
-//     }
-//
-//    func test_getRestDataFromCorrectURL_isTrue () {
-//         // given
-//         let expectation = XCTestExpectation(description: "true")
-//               // when
-//         guard let url = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts") else { return }
-//
-//         self.jfl.getRestData (from: url) { completed, data in
-//             XCTAssertTrue(completed)
-//             expectation.fulfill()
-//         }
-//         // then
-//         wait(for:[expectation], timeout: 20)
-//
-//     }
-//
-//    func test_getRestDataFromInCorrectURL_DataNil () {
-//        // given
-//        let expectation = XCTestExpectation(description: "not nil")
-//              // when
-//        guard let url = URL(string: "https://my-json-server.typicode.com/") else { return }
-//
-//        self.jfl.getRestData (from: url) { completed, data in
-//            XCTAssertNil(data)
-//            expectation.fulfill()
-//        }
-//        // then
-//        wait(for:[expectation], timeout: 5)
-//
-//    }
-//
-//    func test_getRestDataFromCorrectURL_DataNotNil () {
-//        // given
-//        let expectation = XCTestExpectation(description: "not nil")
-//              // when
-//        guard let url = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts") else { return }
-//
-//        self.jfl.getRestData (from: url) { completed, data in
-//            XCTAssertNotNil(data)
-//            expectation.fulfill()
-//        }
-//        // then
-//        wait(for:[expectation], timeout: 20)
-//    }
-
+    
+    func test_getRestDataFromCorrectURL_DataReturned () {
+        // given
+        let expectation = XCTestExpectation(description: "data fetched")
+        let sut = Result<Data,SecondCEPTDD.NetworkErrors>.success(Data(capacity: 730))
+        
+        guard let url = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts") else { return }
+        self.jfl.getRestData(from: url) { resultReturned in
+            print("3. RESULT \(resultReturned)")
+            XCTAssertEqual(resultReturned, sut)
+            expectation.fulfill()
+        }
+        //then
+        wait(for: [expectation], timeout: 15)
+    }
+    
 }
