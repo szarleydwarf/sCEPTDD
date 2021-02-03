@@ -146,16 +146,15 @@ class JsonFileLoaderTest: XCTestCase {
     
     func test_getRestData_isNil () {
         // given
-        let expectation = XCTestExpectation(description: "nil")
-              // when
+        var result: Result<Data>?
+        // when
         
-        self.jfl.getRestData (from: nil) { result in
-            print("RESULT \(result)")
-//            XCTAssertEqual(result, NetworkErrors.noData)
-            expectation.fulfill()
+        self.jfl.getRestData (from: nil) { resultReturn in
+            print("RESULT \(resultReturn)")
+            result = $0
+            
         }
         // then
-        wait(for:[expectation], timeout: 5)
     }
     
 //    func test_getRestDataWithEmptyURL_isNil () {
