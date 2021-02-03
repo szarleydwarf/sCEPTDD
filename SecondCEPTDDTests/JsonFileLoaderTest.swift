@@ -146,15 +146,16 @@ class JsonFileLoaderTest: XCTestCase {
     
     func test_getRestData_isNil () {
         // given
-        var result: Result<Data>?
+        let sut = Result<Data,SecondCEPTDD.NetworkErrors>.failure(SecondCEPTDD.NetworkErrors.noData)
+        var result:Result<Data,SecondCEPTDD.NetworkErrors>?
         // when
         
         self.jfl.getRestData (from: nil) { resultReturn in
             print("RESULT \(resultReturn)")
-            result = $0
-            
+            result = resultReturn
         }
         // then
+        XCTAssertEqual(result, sut)
     }
     
 //    func test_getRestDataWithEmptyURL_isNil () {
