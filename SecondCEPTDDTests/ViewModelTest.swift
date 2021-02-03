@@ -67,7 +67,7 @@ class ViewModelTest: XCTestCase {
     
     func test_SetAccountsList_countIsFive () {
         // given
-        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        let data = JsonFileLoader(decoder: JSONDecoder()).getData(from: JsonFileLoader(decoder: JSONDecoder()).getLocalURL(fromFile: "Accounts", withExtension: "json")!)
         self.vm.setAccountsList(using: data)
         // when
         let result = self.vm.accountsList.count
@@ -78,7 +78,7 @@ class ViewModelTest: XCTestCase {
     func test_setAccountsList_firstElementKindIsCurrent () {
         // given
         let testCase = "current"
-        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        let data = JsonFileLoader(decoder: JSONDecoder()).getData(from: JsonFileLoader(decoder: JSONDecoder()).getLocalURL(fromFile: "Accounts", withExtension: "json")!)
         self.vm.setAccountsList(using: data)
         // when
         let result = self.vm.accountsList
@@ -89,12 +89,22 @@ class ViewModelTest: XCTestCase {
     func test_setAccountsList_firstElementBalanceIs1000 () {
         // given
         let testCase = 1000.0
-        let data = JsonFileLoader().getData(from: JsonFileLoader().getLocalURL(fromFile: "Accounts", withExtension: "json")!)
+        let data = JsonFileLoader(decoder: JSONDecoder()).getData(from: JsonFileLoader(decoder: JSONDecoder()).getLocalURL(fromFile: "Accounts", withExtension: "json")!)
         self.vm.setAccountsList(using: data)
         // when
         let result = self.vm.accountsList
         // then
         XCTAssertEqual(result[0].balance, testCase)
+
+    }
+    
+    func test_setAccountsfromRESTAPI_withNilData_CountIsZero () {
+        // given
+        self.vm.callRestAPI(using: nil)
+        // when
+        let result = self.vm.accountsList.count
+        // then
+        XCTAssertEqual(result, 0)
 
     }
 }

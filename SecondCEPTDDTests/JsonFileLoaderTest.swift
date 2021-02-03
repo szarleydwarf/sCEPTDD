@@ -11,8 +11,9 @@ import XCTest
 
 class JsonFileLoaderTest: XCTestCase {
     var jfl:JsonFileLoader!
+    
     override func setUp() {
-        self.jfl = JsonFileLoader()
+        self.jfl = JsonFileLoader(decoder: JSONDecoder())
         // given
         // when
         // then
@@ -29,15 +30,15 @@ class JsonFileLoaderTest: XCTestCase {
         // then
         XCTAssertNotNil(result)
     }
-//
-//    func test_NJFL_JSONDecoder_Nil () {
-//        // given
-//        // when
-//        let result = self.jfl.decoder
-//        // then
-//        XCTAssertNil(result)
-//    }
-//
+    
+    func test_NJFL_JSONDecoder_NotNil () {
+        // given
+        // when
+        let result = self.jfl.decoder
+        // then
+        XCTAssertNotNil(result)
+    }
+    
     func test_JFL_localURL_isNil () {
         // given
         // when
@@ -50,7 +51,6 @@ class JsonFileLoaderTest: XCTestCase {
         // given
         // when
         let result = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json")
-        print("RESULT \(result)")
         // then
         XCTAssertNotNil(result)
     }
@@ -85,7 +85,7 @@ class JsonFileLoaderTest: XCTestCase {
     func test_fetchFromNilData_returnNil () {
         // given
         // when
-        let result = self.jfl.fetch(from: nil, using: JSONDecoder())
+        let result = self.jfl.fetch(from: nil)
         // then
         XCTAssertNil(result)
     }
@@ -95,7 +95,7 @@ class JsonFileLoaderTest: XCTestCase {
         guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
         let data = self.jfl.getData(from: url)
         // when
-        let result = self.jfl.fetch(from: data, using: JSONDecoder())
+        let result = self.jfl.fetch(from: data)
         // then
         XCTAssertNotNil(result)
     }
@@ -105,9 +105,142 @@ class JsonFileLoaderTest: XCTestCase {
         guard let url = self.jfl.getLocalURL(fromFile: "Accounts", withExtension: "json") else { return }
         let data = self.jfl.getData(from: url)
         // when
-        let result = self.jfl.fetch(from: data, using: JSONDecoder())
+        let result = self.jfl.fetch(from: data)
         // then
         XCTAssertEqual(result?.count, 5)
     }
     
+    func test_GetRemoteURL_isNil () {
+        // given
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "",host: "",path: "")
+        // then
+        XCTAssertNil(result)
+    }
+    
+    func test_getRemoteURL_NotNil () {
+        // given
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "https", host: "my-json-server.typicode.com", path: "/szarleydwarf/secondCEP/master/db/accounts")
+        // then
+        XCTAssertNotNil(result)
+    }
+    
+    func test_getRemoteURL_NotEqualsCorrectURL () {
+        // given
+        let url:URL = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "https",host: "",path: "")
+        // then
+        XCTAssertNotEqual(result, url)
+    }
+    
+    func test_getRemoteURL_EqualsCorrectURL () {
+        // given
+        let url:URL = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts")!
+        // when
+        let result = self.jfl.getRemoteURL(scheme: "https", host: "my-json-server.typicode.com", path: "/szarleydwarf/secondCEP/master/db/accounts")
+        // then
+        XCTAssertEqual(result, url)
+    }
+    
+    func test_getRestData_isNil () {
+        // given
+        let expectation = XCTestExpectation(description: "nil")
+              // when
+        
+        self.jfl.getRestData (from: nil) { result in
+            print("RESULT \(result)")
+//            XCTAssertEqual(result, NetworkErrors.noData)
+            expectation.fulfill()
+        }
+        // then
+        wait(for:[expectation], timeout: 5)
+    }
+    
+//    func test_getRestDataWithEmptyURL_isNil () {
+//        // given
+//        guard let url = URL(string: "") else { return }
+//        let expectation = XCTestExpectation(description: "nil")
+//        // when
+//        self.jfl.getRestData (from: url) { completed, data in
+//            XCTAssertNil(data)
+//            expectation.fulfill()
+//        }
+//        // then
+//        wait(for: [expectation], timeout: 5)
+//    }
+//
+//    func test_getRestDataFromNilURL_isFalse () {
+//         // given
+//         let expectation = XCTestExpectation(description: "false")
+//               // when
+//
+//         self.jfl.getRestData (from: nil) { completed, data in
+//             XCTAssertFalse(completed)
+//             expectation.fulfill()
+//         }
+//         // then
+//         wait(for:[expectation], timeout: 5)
+//     }
+//
+//    func test_getRestDataFromEmptyURL_isFalse () {
+//         // given
+//         let expectation = XCTestExpectation(description: "false")
+//               // when
+//         guard let url = URL(string: "") else { return }
+//
+//         self.jfl.getRestData (from: url) { completed, data in
+//             XCTAssertFalse(completed)
+//             expectation.fulfill()
+//         }
+//         // then
+//         wait(for:[expectation], timeout: 5)
+//
+//     }
+//
+//    func test_getRestDataFromCorrectURL_isTrue () {
+//         // given
+//         let expectation = XCTestExpectation(description: "true")
+//               // when
+//         guard let url = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts") else { return }
+//
+//         self.jfl.getRestData (from: url) { completed, data in
+//             XCTAssertTrue(completed)
+//             expectation.fulfill()
+//         }
+//         // then
+//         wait(for:[expectation], timeout: 20)
+//
+//     }
+//
+//    func test_getRestDataFromInCorrectURL_DataNil () {
+//        // given
+//        let expectation = XCTestExpectation(description: "not nil")
+//              // when
+//        guard let url = URL(string: "https://my-json-server.typicode.com/") else { return }
+//
+//        self.jfl.getRestData (from: url) { completed, data in
+//            XCTAssertNil(data)
+//            expectation.fulfill()
+//        }
+//        // then
+//        wait(for:[expectation], timeout: 5)
+//
+//    }
+//
+//    func test_getRestDataFromCorrectURL_DataNotNil () {
+//        // given
+//        let expectation = XCTestExpectation(description: "not nil")
+//              // when
+//        guard let url = URL(string: "https://my-json-server.typicode.com/szarleydwarf/secondCEP/master/db/accounts") else { return }
+//
+//        self.jfl.getRestData (from: url) { completed, data in
+//            XCTAssertNotNil(data)
+//            expectation.fulfill()
+//        }
+//        // then
+//        wait(for:[expectation], timeout: 20)
+//    }
+
 }

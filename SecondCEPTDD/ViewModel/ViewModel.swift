@@ -15,8 +15,11 @@ class ViewModel: NSObject {
     }
 
     func setAccountsList (using data:Data?) {
-        guard let accounts = JsonFileLoader().fetch(from: data, using: JSONDecoder()) else {return}
+        guard let accounts = JsonFileLoader(decoder: JSONDecoder()).fetch(from: data) else {return}
         self.accountsList = accounts
     }
     
+    func callRestAPI (using data:Data?) {
+        
+    }
 }
